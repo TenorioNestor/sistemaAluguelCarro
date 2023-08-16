@@ -28,20 +28,22 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         inpModelo = new javax.swing.JTextField();
         inpMarca = new javax.swing.JTextField();
-        inpValor = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btCadastrarCarro = new javax.swing.JButton();
+        inpValor = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        inpModelo.setText("Focus");
+
+        inpMarca.setText("Ford");
 
         jLabel1.setText("Modelo");
 
         jLabel2.setText("Marca");
-
-        jLabel3.setText("Valor por KM");
 
         jLabel4.setText("Cadastro Veiculo");
 
@@ -51,6 +53,15 @@ public class TelaCadastro extends javax.swing.JFrame {
                 btCadastrarCarroActionPerformed(evt);
             }
         });
+
+        inpValor.setText("0.10");
+        inpValor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inpValorActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Valor por KM");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -63,16 +74,16 @@ public class TelaCadastro extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(inpValor, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
                             .addComponent(jLabel4)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(inpModelo)
-                                .addComponent(inpMarca)
-                                .addComponent(inpValor, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(inpModelo, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                                .addComponent(inpMarca))))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(29, Short.MAX_VALUE)
                         .addComponent(btCadastrarCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(28, 28, 28))
         );
@@ -89,11 +100,11 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(inpMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(inpValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(42, 42, 42)
+                    .addComponent(jLabel5))
+                .addGap(48, 48, 48)
                 .addComponent(btCadastrarCarro)
                 .addGap(23, 23, 23))
         );
@@ -103,15 +114,20 @@ public class TelaCadastro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCadastrarCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarCarroActionPerformed
+
     Carro carro = new Carro();
     carro.setModelo(inpModelo.getText());
     carro.setMarca(inpMarca.getText());
-    String valorKm = inpValor.getText();
-    carro.setValor(Double.parseDouble(valorKm));
+    carro.setValor(Double.parseDouble(inpValor.getText()));
     carro.mostrarDadosCarro();
-    new TelaAluguel().setAlwaysOnTop(true);
+    System.out.println("teste:"+carro.getValor()+"\n");
+    this.dispose();
     
     }//GEN-LAST:event_btCadastrarCarroActionPerformed
+
+    private void inpValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inpValorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inpValorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,7 +171,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JTextField inpValor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }

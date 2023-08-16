@@ -15,11 +15,17 @@ public class Carro {
     private String modelo;
     private String marca;
     private Double valor;
+    private int diasAaqui;
+
+
     
+
     public String cadastrarCarro(){
+        Aluguel aluguel = new Aluguel();
         String infoCadastro = "Modelo: "+getModelo()+"\n";
         infoCadastro += "Marca: "+getMarca()+"\n";
         infoCadastro += "Valor por KM: "+String.valueOf(getValor())+"\n";
+        infoCadastro += "Dias: "+String.valueOf(getDiasAaqui())+"\n";
         return infoCadastro;
         
     }
@@ -61,7 +67,13 @@ public class Carro {
     public void setValor(Double valor) {
         this.valor = valor;
     }
-    
+    public int getDiasAaqui() {
+        return diasAaqui;
+    }
+
+    public void setDiasAaqui(int diasAaqui) {
+        this.diasAaqui = diasAaqui;
+    }
     
     
 }

@@ -4,6 +4,8 @@
  */
 package aluguelcarro;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author tayzeheidemanntenorio
@@ -17,41 +19,41 @@ public class Aluguel  {
     private int kmInicial;
     private int kmFinal;
     private Double valorTotalAluguel;
+    private Double valorPorKm;
+
     Double dias = 1.0 * getQtdDias() ;
+    
     
     public void iniciarLocacao(){
         new TelaCliente().setVisible(true);
     }
 
-    public String mostrarResumoLocacao(){
-        Double valor = dias * carro.getValor();
-        String printValor;
-        if (dias > 10.0 || dias >20.0){
-            Double valorTotal = dias * (getKmInicial()+getKmFinal());
-            Double desconto = valorTotal * 0.1;
-            Double valorFinal = valor - desconto;
-            System.out.println("Valor da Locacao:"+valor.toString()+"\n");
-            printValor = "Valor da Locacao:"+valor.toString()+"\n";
-        }
-        if (dias >= 20.0){
-            Double valorTotal = dias * (getKmInicial()+getKmFinal());
-            Double desconto = valorTotal * 0.1;
-            System.out.println("Valor da Locacao:"+valor.toString()+"\n");
-            printValor = "Valor da Locacao:"+valor.toString()+"\n";
-        }
-        else{
-            System.out.println("Valor da Locacao:"+valor.toString()+"\n");
-            printValor = "Valor da Locacao:"+valor.toString()+"\n";
-        } 
-        return printValor;
-        
+    public void mostrarResumoLocacao(){
+        Carro carro = new Carro();
+        int kmRodado = getKmFinal() - getKmInicial();
+        //Double valorTotal = kmRodado * carro.getValor();
+        String msg = "Km Inicial: "+Integer.toString(getKmInicial())+"\n";
+        msg+="Km Final: "+Integer.toString(getKmFinal())+"\n";
+        msg+="Quantidade de dias: "+Integer.toString(getQtdDias())+"\n";
+        msg+="Km rodado: "+kmRodado+"\n";
+        msg+="Valor totaol sem desconto: "+carro.getMarca()+"\n";
+
+        System.out.println(msg);
     }
     public String fecharLocacao(){
         String msg = cliente.mostrarDadosUsuario();
         msg += carro.mostrarDadosCarro();
-        msg += mostrarResumoLocacao();
         return msg;
         
+    }
+    
+    
+    public Double getValorPorKm() {
+        return valorPorKm;
+    }
+
+    public void setValorPorKm(Double valorPorKm) {
+        this.valorPorKm = valorPorKm;
     }
     
     public Carro getCarro() {

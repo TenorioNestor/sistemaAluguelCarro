@@ -4,6 +4,8 @@
  */
 package aluguelcarro;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author tayzeheidemanntenorio
@@ -44,14 +46,17 @@ public class TelaCliente extends javax.swing.JFrame {
 
         jLabel2.setText("Nome");
 
+        inpNomeCliente.setText("Ze");
         jScrollPane1.setViewportView(inpNomeCliente);
 
         jLabel3.setText("CPF");
 
+        inpCpf.setText("123456789");
         jScrollPane2.setViewportView(inpCpf);
 
         jLabel4.setText("Telefone");
 
+        inpTelefone.setText("9999-9999");
         jScrollPane3.setViewportView(inpTelefone);
 
         btCadastrarUser.setText("Cadastrar");
@@ -122,8 +127,8 @@ public class TelaCliente extends javax.swing.JFrame {
         cliente.setCpf(inpCpf.getText());
         cliente.setTelefone(inpTelefone.getText());
         cliente.mostrarDadosUsuario();
-        
         new TelaCadastro().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btCadastrarUserActionPerformed
 
     /**

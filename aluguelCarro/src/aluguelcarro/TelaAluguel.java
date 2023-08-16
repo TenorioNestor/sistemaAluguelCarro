@@ -4,6 +4,8 @@
  */
 package aluguelcarro;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author tayzeheidemanntenorio
@@ -31,11 +33,11 @@ public class TelaAluguel extends javax.swing.JFrame {
         txtTela = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtQtdDias = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtKmInicial = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtKmFinal = new javax.swing.JTextField();
         btMostrarCadastro = new javax.swing.JToggleButton();
+        txtIkmInicial = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -57,9 +59,11 @@ public class TelaAluguel extends javax.swing.JFrame {
 
         jLabel2.setText("Quantidade de Dias");
 
-        jLabel3.setText("Km Inicial");
+        txtQtdDias.setText("10");
 
         jLabel4.setText("Km Final");
+
+        txtKmFinal.setText("150");
 
         btMostrarCadastro.setText("Mostrar Cadastro");
         btMostrarCadastro.addActionListener(new java.awt.event.ActionListener() {
@@ -67,6 +71,15 @@ public class TelaAluguel extends javax.swing.JFrame {
                 btMostrarCadastroActionPerformed(evt);
             }
         });
+
+        txtIkmInicial.setText("100");
+        txtIkmInicial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIkmInicialActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Km Inicial");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,18 +94,19 @@ public class TelaAluguel extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtTela, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
+                            .addComponent(btAluguel, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
+                            .addComponent(btMostrarCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addGap(18, 18, 18)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3))
+                                .addGap(18, 18, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtIkmInicial)
                                     .addComponent(txtQtdDias)
-                                    .addComponent(txtKmInicial)
-                                    .addComponent(txtKmFinal, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)))
-                            .addComponent(btAluguel, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
-                            .addComponent(btMostrarCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(txtKmFinal, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)))))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -104,18 +118,18 @@ public class TelaAluguel extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtQtdDias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(txtKmInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtIkmInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
                     .addComponent(txtKmFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addComponent(btAluguel)
                 .addGap(18, 18, 18)
-                .addComponent(btMostrarCadastro)
+                .addComponent(btMostrarCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTela, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
                 .addGap(15, 15, 15))
@@ -127,10 +141,10 @@ public class TelaAluguel extends javax.swing.JFrame {
 
     private void btAluguelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAluguelActionPerformed
     Aluguel aluguel = new Aluguel();
-    aluguel.setKmInicial(Integer.parseInt(txtKmInicial.getText()));
-    aluguel.setKmFinal(Integer.parseInt(txtKmFinal.getText()));
-    aluguel.setQtdDias(Integer.parseInt(txtQtdDias.getText()));
+    Carro carro = new Carro();
+    carro.setDiasAaqui(Integer.parseInt(txtQtdDias.getText()));
     aluguel.iniciarLocacao();
+    
     
     }//GEN-LAST:event_btAluguelActionPerformed
 
@@ -140,9 +154,16 @@ public class TelaAluguel extends javax.swing.JFrame {
 
     private void btMostrarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMostrarCadastroActionPerformed
     Aluguel aluguel = new Aluguel();
-    
-        System.out.println(aluguel.mostrarResumoLocacao());
+    aluguel.setKmFinal(Integer.parseInt(txtKmFinal.getText()));
+    aluguel.setQtdDias(Integer.parseInt(txtQtdDias.getText()));
+    aluguel.setKmInicial(Integer.parseInt(txtIkmInicial.getText()));
+    aluguel.mostrarResumoLocacao();
+    this.dispose();
     }//GEN-LAST:event_btMostrarCadastroActionPerformed
+
+    private void txtIkmInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIkmInicialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIkmInicialActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,8 +207,8 @@ public class TelaAluguel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextField txtIkmInicial;
     private javax.swing.JTextField txtKmFinal;
-    private javax.swing.JTextField txtKmInicial;
     private javax.swing.JTextField txtQtdDias;
     private javax.swing.JTextField txtTela;
     // End of variables declaration//GEN-END:variables
