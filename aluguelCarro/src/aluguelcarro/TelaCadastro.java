@@ -32,8 +32,6 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btCadastrarCarro = new javax.swing.JButton();
-        inpValor = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -54,15 +52,6 @@ public class TelaCadastro extends javax.swing.JFrame {
             }
         });
 
-        inpValor.setText("0.10");
-        inpValor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inpValorActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setText("Valor por KM");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -73,15 +62,12 @@ public class TelaCadastro extends javax.swing.JFrame {
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(inpValor, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
                             .addComponent(jLabel4)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(inpModelo, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
-                                .addComponent(inpMarca))))
+                            .addComponent(inpModelo, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                            .addComponent(inpMarca)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(29, Short.MAX_VALUE)
                         .addComponent(btCadastrarCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -100,11 +86,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(inpMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(inpValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(48, 48, 48)
+                .addGap(82, 82, 82)
                 .addComponent(btCadastrarCarro)
                 .addGap(23, 23, 23))
         );
@@ -118,16 +100,10 @@ public class TelaCadastro extends javax.swing.JFrame {
     Carro carro = new Carro();
     carro.setModelo(inpModelo.getText());
     carro.setMarca(inpMarca.getText());
-    carro.setValor(Double.parseDouble(inpValor.getText()));
     carro.mostrarDadosCarro();
-    System.out.println("teste:"+carro.getValor()+"\n");
     this.dispose();
     
     }//GEN-LAST:event_btCadastrarCarroActionPerformed
-
-    private void inpValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inpValorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inpValorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,10 +144,8 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JButton btCadastrarCarro;
     private javax.swing.JTextField inpMarca;
     private javax.swing.JTextField inpModelo;
-    private javax.swing.JTextField inpValor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }

@@ -11,39 +11,48 @@ import javax.swing.JOptionPane;
  * @author tayzeheidemanntenorio
  */
 public class Aluguel  {
-    
+    TelaCadastro cad = new TelaCadastro();
     Carro carro = new Carro();
     Cliente cliente = new Cliente();
     private String id;
     private int qtdDias;
     private int kmInicial;
     private int kmFinal;
-    private Double valorTotalAluguel;
     private Double valorPorKm;
+    private String msg;
 
-    Double dias = 1.0 * getQtdDias() ;
-    
+ 
     
     public void iniciarLocacao(){
         new TelaCliente().setVisible(true);
     }
 
     public void mostrarResumoLocacao(){
+        Double valorTotalAluguel;
         Carro carro = new Carro();
         int kmRodado = getKmFinal() - getKmInicial();
-        //Double valorTotal = kmRodado * carro.getValor();
-        String msg = "Km Inicial: "+Integer.toString(getKmInicial())+"\n";
+        Double valorTotalKm = kmRodado * getValorPorKm();
+        valorTotalAluguel =  valorTotalKm * getQtdDias();
+        if (getQtdDias()>10 && getQtdDias()<19){
+            Double desconto = valorTotalAluguel * 0.1;
+            System.out.println("Dias="+getQtdDias()+"\n");
+            valorTotalAluguel = valorTotalAluguel - desconto;
+        }else if (getQtdDias()>=20){
+            Double desconto = valorTotalAluguel * 0.2;
+            System.out.println("ValorAluguel="+desconto+"\n");
+            valorTotalAluguel = valorTotalAluguel - desconto;
+        }
+        String msg ="Aluguel\nQuantidade de dias: "+Integer.toString(getQtdDias())+"\n";
+        msg+="Km Inicial: "+Integer.toString(getKmInicial())+"\n";
         msg+="Km Final: "+Integer.toString(getKmFinal())+"\n";
-        msg+="Quantidade de dias: "+Integer.toString(getQtdDias())+"\n";
-        msg+="Km rodado: "+kmRodado+"\n";
-        msg+="Valor totaol sem desconto: "+carro.getMarca()+"\n";
-
+        msg+="Valor por Km: "+String.valueOf(getValorPorKm())+"\n";
+        msg+="Valor Total: "+String.valueOf(valorTotalAluguel)+"\n";
         System.out.println(msg);
+        
     }
-    public String fecharLocacao(){
-        String msg = cliente.mostrarDadosUsuario();
-        msg += carro.mostrarDadosCarro();
-        return msg;
+    public void fecharLocacao(){
+        JOptionPane.showMessageDialog(null, "Todas as informações foram impressas no Output!");
+        
         
     }
     
@@ -104,12 +113,13 @@ public class Aluguel  {
         this.kmFinal = kmFinal;
     }
 
-    public Double getValorTotalAluguel() {
-        return valorTotalAluguel;
+
+       public String getMsg() {
+        return msg;
     }
 
-    public void setValorTotalAluguel(Double valorTotalAluguel) {
-        this.valorTotalAluguel = valorTotalAluguel;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
     
     

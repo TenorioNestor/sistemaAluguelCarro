@@ -14,7 +14,6 @@ public class Carro {
     private int id;
     private String modelo;
     private String marca;
-    private Double valor;
     private int diasAaqui;
 
 
@@ -22,10 +21,8 @@ public class Carro {
 
     public String cadastrarCarro(){
         Aluguel aluguel = new Aluguel();
-        String infoCadastro = "Modelo: "+getModelo()+"\n";
+        String infoCadastro = "Carro\nModelo: "+getModelo()+"\n";
         infoCadastro += "Marca: "+getMarca()+"\n";
-        infoCadastro += "Valor por KM: "+String.valueOf(getValor())+"\n";
-        infoCadastro += "Dias: "+String.valueOf(getDiasAaqui())+"\n";
         return infoCadastro;
         
     }
@@ -60,13 +57,7 @@ public class Carro {
         this.marca = marca;
     }
 
-    public Double getValor() {
-        return valor;
-    }
 
-    public void setValor(Double valor) {
-        this.valor = valor;
-    }
     public int getDiasAaqui() {
         return diasAaqui;
     }

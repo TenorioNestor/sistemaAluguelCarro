@@ -15,7 +15,7 @@ public class Cliente {
     private String telefone;
     
     public String cadastrarUsuario(){
-        String addDados = "Nome:"+getNome()+"\n";
+        String addDados = "Cliente\nNome:"+getNome()+"\n";
         addDados += "CPF:"+getCpf()+"\n";
         addDados += "Telefone:"+getTelefone()+"\n";
         return addDados;

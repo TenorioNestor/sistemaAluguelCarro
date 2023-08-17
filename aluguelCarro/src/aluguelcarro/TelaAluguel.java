@@ -12,9 +12,7 @@ import javax.swing.JOptionPane;
  */
 public class TelaAluguel extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaAluguel
-     */
+
     public TelaAluguel() {
         initComponents();
     }
@@ -30,7 +28,6 @@ public class TelaAluguel extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         btAluguel = new javax.swing.JButton();
-        txtTela = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtQtdDias = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -38,6 +35,8 @@ public class TelaAluguel extends javax.swing.JFrame {
         btMostrarCadastro = new javax.swing.JToggleButton();
         txtIkmInicial = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        inpValor = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -50,13 +49,6 @@ public class TelaAluguel extends javax.swing.JFrame {
             }
         });
 
-        txtTela.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtTela.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTelaActionPerformed(evt);
-            }
-        });
-
         jLabel2.setText("Quantidade de Dias");
 
         txtQtdDias.setText("10");
@@ -65,7 +57,7 @@ public class TelaAluguel extends javax.swing.JFrame {
 
         txtKmFinal.setText("150");
 
-        btMostrarCadastro.setText("Mostrar Cadastro");
+        btMostrarCadastro.setText("Finalizar Aluguel");
         btMostrarCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btMostrarCadastroActionPerformed(evt);
@@ -81,6 +73,15 @@ public class TelaAluguel extends javax.swing.JFrame {
 
         jLabel3.setText("Km Inicial");
 
+        jLabel5.setText("Valor por KM");
+
+        inpValor.setText("0.10");
+        inpValor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inpValorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -93,19 +94,20 @@ public class TelaAluguel extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtTela, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
                             .addComponent(btAluguel, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
                             .addComponent(btMostrarCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel4)
-                                    .addComponent(jLabel3))
-                                .addGap(18, 18, Short.MAX_VALUE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(19, 19, 19)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtIkmInicial)
                                     .addComponent(txtQtdDias)
-                                    .addComponent(txtKmFinal, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE))
+                                    .addComponent(txtKmFinal, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+                                    .addComponent(inpValor))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)))))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
@@ -126,13 +128,15 @@ public class TelaAluguel extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
                     .addComponent(txtKmFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inpValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(74, 74, 74)
                 .addComponent(btAluguel)
-                .addGap(18, 18, 18)
-                .addComponent(btMostrarCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTela, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
-                .addGap(15, 15, 15))
+                .addComponent(btMostrarCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -142,22 +146,19 @@ public class TelaAluguel extends javax.swing.JFrame {
     private void btAluguelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAluguelActionPerformed
     Aluguel aluguel = new Aluguel();
     Carro carro = new Carro();
-    carro.setDiasAaqui(Integer.parseInt(txtQtdDias.getText()));
     aluguel.iniciarLocacao();
     
     
     }//GEN-LAST:event_btAluguelActionPerformed
-
-    private void txtTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTelaActionPerformed
 
     private void btMostrarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMostrarCadastroActionPerformed
     Aluguel aluguel = new Aluguel();
     aluguel.setKmFinal(Integer.parseInt(txtKmFinal.getText()));
     aluguel.setQtdDias(Integer.parseInt(txtQtdDias.getText()));
     aluguel.setKmInicial(Integer.parseInt(txtIkmInicial.getText()));
+    aluguel.setValorPorKm(Double.parseDouble(inpValor.getText()));
     aluguel.mostrarResumoLocacao();
+    aluguel.fecharLocacao();
     this.dispose();
     }//GEN-LAST:event_btMostrarCadastroActionPerformed
 
@@ -165,6 +166,10 @@ public class TelaAluguel extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIkmInicialActionPerformed
 
+    private void inpValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inpValorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inpValorActionPerformed
+  
     /**
      * @param args the command line arguments
      */
@@ -203,13 +208,14 @@ public class TelaAluguel extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAluguel;
     private javax.swing.JToggleButton btMostrarCadastro;
+    private javax.swing.JTextField inpValor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField txtIkmInicial;
     private javax.swing.JTextField txtKmFinal;
     private javax.swing.JTextField txtQtdDias;
-    private javax.swing.JTextField txtTela;
     // End of variables declaration//GEN-END:variables
 }
